@@ -97,8 +97,6 @@ defmodule Mix.Tasks.Seed do
       pool: DBConnection.ConnectionPool
     )
 
-
-
     Postgrex.query!(
       DB,
       "INSERT INTO users(username, password_hash) VALUES($1, $2)",
