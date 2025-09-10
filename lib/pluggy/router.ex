@@ -21,12 +21,14 @@ defmodule Pluggy.Router do
   plug(:match)
   plug(:dispatch)
 
-  
+
 
   get("/fruits", do: FruitController.index(conn))
   get("/fruits/new", do: FruitController.new(conn))
   get("/fruits/:id", do: FruitController.show(conn, id))
   get("/fruits/:id/edit", do: FruitController.edit(conn, id))
+
+  get("/pizzas", do: PizzaController.index(conn))
 
   post("/fruits", do: FruitController.create(conn, conn.body_params))
 
