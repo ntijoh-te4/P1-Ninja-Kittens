@@ -5,6 +5,7 @@ defmodule Pluggy.FruitController do
   alias Pluggy.User
   import Pluggy.Template, only: [render: 2]
   import Plug.Conn, only: [send_resp: 3]
+  
 
   def index(conn) do
     # get user if logged in
