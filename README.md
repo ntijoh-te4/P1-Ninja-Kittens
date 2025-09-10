@@ -1,3 +1,7 @@
+psql -h localhost -U postgres -d postgres
+psql -h localhost -U postgres -d postgres
+psql -h localhost -U postgres -d postgres
+
 # Pluggy
 
 Eftersom Servy innehåller en del svårfixade buggar byggde jag en skelettapplikation baserat på [Plug](https://hex.pm/packages/plug) och [Cowboy](https://github.com/ninenines/cowboy). Plug & Cowboy är (som nämndes i de senare Servy-filmerna)  de ramverk som i stort sett alla Elixir-webbramverk är baserade på. 
