@@ -33,9 +33,20 @@ main_section {
 
 .order_text {
 	margin: 0;
+	text-decoration: underline;
 }
+
+
+.pizza_orders_header {
+	margin: 0;
+	margin-bottom: 60px;
+	justify-self: center;
+	text-decoration: underline;
+}
+
 h3 {
 	margin: 0;
+	font-size: large;
 }
 
 orders {
@@ -43,7 +54,7 @@ orders {
 	display: grid;
 	margin-bottom: 100px;
 	margin-left: 100px;
-	margin-right: 900px;
+	width: 650px;
 }
 
 .pizza_display{
