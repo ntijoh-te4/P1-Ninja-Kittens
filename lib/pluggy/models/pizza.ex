@@ -32,6 +32,10 @@ defmodule Pluggy.Pizza do
     |> to_struct
   end
 
+  # def get_tony(conn) do
+  #   Postgrex.query!(DB, "SELECT * from pizzas", [(conn)])
+  # end
+
   # def picture(id) do
   #   Postgrex.query!(DB, "SELECT img FROM pizzas where id = $1",[id])
   #   |> Path.join(["../priv/uploads/img/",])

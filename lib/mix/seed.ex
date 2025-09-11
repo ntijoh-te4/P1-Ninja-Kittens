@@ -134,10 +134,14 @@ defmodule Mix.Tasks.Seed do
       pool: DBConnection.ConnectionPool
     )
 
+    # Postgrex.query!(DB, "SELECT * FROM pizzas JOIN pizza_cart ON pizzas.name = pizza_cart.name WHERE pizzas.name = $1",
+    #   pool: DBConnection.ConnectionPool
+    # )
+
     Postgrex.query!(
       DB,
       "INSERT INTO users(username, password_hash) VALUES($1, $2)",
-      ["a", Bcrypt.hash_pwd_salt("a")],
+      ["Tony", Bcrypt.hash_pwd_salt("a")],
       pool: DBConnection.ConnectionPool
     )
 
