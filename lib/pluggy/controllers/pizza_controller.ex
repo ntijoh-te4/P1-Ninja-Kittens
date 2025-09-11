@@ -1,6 +1,6 @@
 defmodule Pluggy.PizzaController do
   require IEx
-  alias Pluggy.Fruit
+  
   alias Pluggy.User
   alias Pluggy.Pizza
   import Pluggy.Template, only: [render: 2]

@@ -1,4 +1,6 @@
-<h1>Fruits.index (/fruits)</h1>
+<main>
+<img src="<%= "/uploads/img/tonys-pizza-logo.svg" %>" alt="SVG" />
+<section>
 
 <%= if user do %>
 	<form action="/users/logout" method="post">
@@ -27,6 +29,6 @@
   <% end %>
 </ul>
 <a href="/fruits/new">Add new fruit</a>
-
-
-
+</section>
+<link rel="stylesheet" href="<%= "/priv/app.css" %>">
+<main>

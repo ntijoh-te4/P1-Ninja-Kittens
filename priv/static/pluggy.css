@@ -1,3 +1,22 @@
 body {
-	background-color: peachpuff;
+	background-color: white;
+	margin: 0;
+}
+main {
+	background-color: goldenrod;
+	display: grid;
+	width: 60vw;
+	height: 100vh;
+	justify-self: center;
+	align-items: center;
+}
+
+section {
+	display: grid;
+	justify-self: center;
+}
+
+img {
+	display: flex;
+	justify-self: center;
 }
