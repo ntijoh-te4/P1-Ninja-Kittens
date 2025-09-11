@@ -22,13 +22,13 @@
 <ul>
   <%= for fruit <- pizzas do %>
     <li>
-    	<a href="/fruits/<%= fruit.id %>">
+    	<a href="/pizzas/<%= fruit.id %>">
 			<%= fruit.name %> - <%= fruit.name %>
 		</a>
 	</li>
   <% end %>
 </ul>
-<a href="/fruits/new">Add new fruit</a>
+<a href="/pizzas/new">Add new fruit</a>
 </section>
 <link rel="stylesheet" href="<%= "/priv/app.css" %>">
 <main>

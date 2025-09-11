@@ -1,8 +1,8 @@
-<h1>Pizzas (/pizzas/<%= pizza.id %>)</h1>
+<h1>Pizzas (/pizzas/<%= pizzas.id %>)</h1>
 
 <h2>
-	<a href="/pizzas/<%= pizza.id %>/edit"><%= pizza.name %></a>
-	<form action="/pizzas/<%= pizza.id %>/destroy" method="post">
+	<a href="/pizzas/<%= pizzas.id %>/edit"><%= pizzas.name %></a>
+	<form action="/pizzas/<%= pizzas.id %>/destroy" method="post">
 		<button type="submit">Destroy Pizza</button>
 	</form>
 </h2>
