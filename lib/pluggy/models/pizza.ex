@@ -26,6 +26,10 @@ defmodule Pluggy.Pizza do
     |> to_struct_list
   end
 
+  def all_with_ingredients do
+    
+  end
+
    def get(id) do
     Postgrex.query!(DB, "SELECT * FROM pizzas WHERE id = $1 LIMIT 1", [String.to_integer(id)]
     ).rows

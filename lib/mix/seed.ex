@@ -98,7 +98,7 @@ defmodule Mix.Tasks.Seed do
     )
 
     Postgrex.query!(DB, "INSERT INTO pizzas(name, img, tomat, mozarella, basilika, skinka, svamp, kronärtskocka, oliver, parmesan, pecorino, gorgonzola, paprika, aubergine, zucchini, salami, chili)
-    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)", ["Quattro stagioni","quattro-staginoi.svg",1,1,0,1,1,1,1,0,0,0,0,0,0,0,0],
+    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)", ["Quattro stagioni","quattro-stagioni.svg",1,1,0,1,1,1,1,0,0,0,0,0,0,0,0],
       pool: DBConnection.ConnectionPool
     )
 

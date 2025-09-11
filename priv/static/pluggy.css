@@ -11,12 +11,41 @@ main {
 	align-items: center;
 }
 
-section {
+/* section {
 	display: grid;
 	justify-self: center;
-}
+} */
 
-img {
+/* img {
 	display: flex;
 	justify-self: center;
+} */
+
+.tonys_logga{
+	width: auto;
+}
+
+main_section {
+	display: grid;
+	height: 100vh;
+
+}
+
+.order_text {
+	margin: 0;
+}
+h3 {
+	margin: 0;
+}
+
+orders {
+	background-color: goldenrod;
+	display: grid;
+	margin-bottom: 100px;
+	margin-left: 100px;
+	margin-right: 900px;
+}
+
+.pizza_display{
+	width: 600px;
 }
