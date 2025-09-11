@@ -24,14 +24,15 @@ defmodule Pluggy.Router do
 
 
   get("/pizzas", do: PizzaController.index(conn))
+  get("/pizzas/:id", do: PizzaController.show(conn, id))
 
 
   ######
 
-  get("/fruits", do: FruitController.index(conn))
+  # get("/fruits", do: FruitController.index(conn))
   get("/fruits/new", do: FruitController.new(conn))
-  get("/fruits/:id", do: FruitController.show(conn, id))
-  get("/fruits/:id/edit", do: FruitController.edit(conn, id))
+  # get("/fruits/:id", do: FruitController.show(conn, id))
+  # get("/fruits/:id/edit", do: FruitController.edit(conn, id))
 
   post("/fruits", do: FruitController.create(conn, conn.body_params))
 

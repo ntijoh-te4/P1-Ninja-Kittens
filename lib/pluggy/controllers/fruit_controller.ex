@@ -5,7 +5,7 @@ defmodule Pluggy.FruitController do
   alias Pluggy.User
   import Pluggy.Template, only: [render: 2]
   import Plug.Conn, only: [send_resp: 3]
-  
+
 
   def index(conn) do
     # get user if logged in
@@ -22,8 +22,8 @@ defmodule Pluggy.FruitController do
 
   #render använder eex
   def new(conn), do: send_resp(conn, 200, render("fruits/new", []))
-  def show(conn, id), do: send_resp(conn, 200, render("fruits/show", fruit: Fruit.get(id)))
-  def edit(conn, id), do: send_resp(conn, 200, render("fruits/edit", fruit: Fruit.get(id)))
+  # def show(conn, id), do: send_resp(conn, 200, render("fruits/show", fruit: Fruit.get(id)))
+  # def edit(conn, id), do: send_resp(conn, 200, render("fruits/edit", fruit: Fruit.get(id)))
 
   def create(conn, params) do
     Fruit.create(params)

@@ -1,6 +1,6 @@
 defmodule Pluggy.PizzaController do
   require IEx
-  
+
   alias Pluggy.User
   alias Pluggy.Pizza
   import Pluggy.Template, only: [render: 2]
@@ -17,8 +17,9 @@ defmodule Pluggy.PizzaController do
       end
 
     send_resp(conn,200,render("fruits/index", pizzas: Pizza.all(), user: current_user)
-
-
     )
+
   end
+
+  def show(conn, id), do: send_resp(conn, 200, render("pizzas/show", pizza: Pizza.get(id)))
 end

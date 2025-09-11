@@ -8,11 +8,11 @@ defmodule Pluggy.Fruit do
     |> to_struct_list
   end
 
-  def get(id) do
-    Postgrex.query!(DB, "SELECT * FROM fruits WHERE id = $1 LIMIT 1", [String.to_integer(id)]
-    ).rows
-    |> to_struct
-  end
+  # def get(id) do
+  #   Postgrex.query!(DB, "SELECT * FROM fruits WHERE id = $1 LIMIT 1", [String.to_integer(id)]
+  #   ).rows
+  #   |> to_struct
+  # end
 
   def update(id, params) do
     name = params["name"]
@@ -37,9 +37,9 @@ defmodule Pluggy.Fruit do
     Postgrex.query!(DB, "DELETE FROM fruits WHERE id = $1", [String.to_integer(id)])
   end
 
-  def to_struct([[id, name, tastiness]]) do
-    %Fruit{id: id, name: name, tastiness: tastiness}
-  end
+  # def to_struct([[id, name, tastiness]]) do
+  #   %Fruit{id: id, name: name, tastiness: tastiness}
+  # end
 
   def to_struct_list(rows) do
     for [id, name, tastiness] <- rows, do: %Fruit{id: id, name: name, tastiness: tastiness}

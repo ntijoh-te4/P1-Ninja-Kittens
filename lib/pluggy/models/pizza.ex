@@ -26,6 +26,12 @@ defmodule Pluggy.Pizza do
     |> to_struct_list
   end
 
+   def get(id) do
+    Postgrex.query!(DB, "SELECT * FROM pizzas WHERE id = $1 LIMIT 1", [String.to_integer(id)]
+    ).rows
+    |> to_struct
+  end
+
   # def picture(id) do
   #   Postgrex.query!(DB, "SELECT img FROM pizzas where id = $1",[id])
   #   |> Path.join(["../priv/uploads/img/",])
@@ -37,6 +43,27 @@ defmodule Pluggy.Pizza do
     for [id, name, img, tomat, mozarella, basilika, skinka, svamp, kronärtskocka, oliver, parmesan, pecorino, gorgonzola,paprika,aubergine,zucchini,salami,chili]
     <- rows, do: %Pizza{
       id: id,
+      name: name,
+      img: img,
+      tomat: tomat,
+      mozarella: mozarella,
+      basilika: basilika,
+      skinka: skinka,
+      svamp: svamp,
+      kronärtskocka: kronärtskocka,
+      oliver: oliver,
+      parmesan: parmesan,
+      pecorino: pecorino,
+      gorgonzola: gorgonzola,
+      paprika: paprika,
+      aubergine: aubergine,
+      zucchini: zucchini,
+      salami: salami,
+      chili: chili}
+  end
+
+  def to_struct([[id, name, img, tomat, mozarella, basilika, skinka, svamp, kronärtskocka, oliver, parmesan, pecorino, gorgonzola,paprika,aubergine,zucchini,salami,chili]]) do
+    %Pizza{id: id,
       name: name,
       img: img,
       tomat: tomat,
