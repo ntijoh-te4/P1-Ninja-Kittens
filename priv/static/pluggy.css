@@ -37,7 +37,7 @@ main_section {
 main_section_index {
 	display: grid;
 	grid-template-columns: auto auto;
-	margin-inline-start: 100px;
+	margin-inline-start: 300px;
 	margin-inline-end: 300px;
 	height: 100vh;
 }
@@ -46,9 +46,10 @@ main_section_index {
 	margin: 0;
 }
 
-.pizza_name_index {
+#pizza_name_index {
 	margin-left: 50px;
 	font-family: sans-serif;
+	text-decoration: none;
 }
 
 
@@ -72,6 +73,10 @@ tonys_orders {
 	width: fit-content;
 	height: fit-content;
 
+}
+
+#pizza_names {
+	color: black;
 }
 
 pizza_box {
@@ -103,11 +108,18 @@ div button{
 }
 
 buttons {
-	display: grid;
-	grid-template-columns: auto auto;
+	margin-left: 100px;
 }
 
 .ing_list {
 	color: lightslategray;
 	font-family: sans-serif;
+}
+
+.ingredient_info {
+	padding: 0px;
+}
+
+orders {
+	margin-bottom: 50px;
 }
