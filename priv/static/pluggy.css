@@ -11,15 +11,80 @@ main {
 	align-items: center;
 }
 
-section {
+/* section {
 	display: grid;
 	justify-self: center;
-}
+} */
 
-img {
+/* img {
 	display: flex;
 	justify-self: center;
-	size: width 200px;
-	height: 200px;
+} */
+
+.tonys_nav{
+	display: flex;
+	height: 300px;
+}
+
+.tonys_logga {
+	margin-left: 20px;
+	
+	width: 80%;
+}
+.tonys_basket {
+
+	margin-inline: 20px;
+	align-self: center;
+	height: 150px;
+}
+
+main_section {
+	display: grid;
+	height: 100vh;
+}
+
+.order_text {
+	margin: 0;
+}
+
+
+.pizza_orders_header {
+	margin: 0;
+	margin-bottom: 60px;
+	justify-self: center;
+	text-decoration: underline;
+}
+
+h3 {
+	margin: 0;
+	font-weight: 500;
+	margin-top: 5px;
+}
+
+orders {
+	display: flex;
+	margin-bottom: 100px;
+	margin-left: 100px;
+	width: fit-content;
+	height: fit-content;
+}
+
+div {
+	display:grid;
+	height: fit-content;
+	margin-top: 15%;
+}
+
+.pizza_display{
+	width: 300px;
+}
+
+div button{
+	margin-top: 50px;
+	width: fit-content;
+	padding: 5px;
+	background-color: bisque;
+	border: 2px;
+	border-radius: 7px;
 }
 
