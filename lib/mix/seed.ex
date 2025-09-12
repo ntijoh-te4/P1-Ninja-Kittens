@@ -361,49 +361,6 @@ defmodule Mix.Tasks.Seed do
       pool: DBConnection.ConnectionPool
     )
 
-
-    # Postgrex.query!(
-    #   DB,
-    #   "INSERT INTO pizzas(name, img, tomat, mozarella, basilika, skinka, svamp, kronärtskocka, oliver, parmesan, pecorino, gorgonzola, paprika, aubergine, zucchini, salami, chili)
-    #   VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)", ["Margherita","margherita.svg",1,1,1,0,0,0,0,0,0,0,0,0,0,0,0],
-    #   pool: DBConnection.ConnectionPool
-    # )
-
-    # Postgrex.query!(DB, "INSERT INTO pizzas(name, img, tomat, mozarella, basilika, skinka, svamp, kronärtskocka, oliver, parmesan, pecorino, gorgonzola, paprika, aubergine, zucchini, salami, chili)
-    # VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)", ["Marinara","marinara.svg",1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    #   pool: DBConnection.ConnectionPool
-    # )
-
-    # Postgrex.query!(DB, "INSERT INTO pizzas(name, img, tomat, mozarella, basilika, skinka, svamp, kronärtskocka, oliver, parmesan, pecorino, gorgonzola, paprika, aubergine, zucchini, salami, chili)
-    # VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)", ["Prosciutto e funghi","prosciutto-e-funghi.svg",1,1,0,1,1,0,0,0,0,0,0,0,0,0,0],
-    #   pool: DBConnection.ConnectionPool
-    # )
-
-    # Postgrex.query!(DB, "INSERT INTO pizzas(name, img, tomat, mozarella, basilika, skinka, svamp, kronärtskocka, oliver, parmesan, pecorino, gorgonzola, paprika, aubergine, zucchini, salami, chili)
-    # VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)", ["Quattro stagioni","quattro-stagioni.svg",1,1,0,1,1,1,1,0,0,0,0,0,0,0,0],
-    #   pool: DBConnection.ConnectionPool
-    # )
-
-    # Postgrex.query!(DB, "INSERT INTO pizzas(name, img, tomat, mozarella, basilika, skinka, svamp, kronärtskocka, oliver, parmesan, pecorino, gorgonzola, paprika, aubergine, zucchini, salami, chili)
-    # VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)", ["Capricciosa","capricciosa.svg",1,1,0,1,1,1,0,0,0,0,0,0,0,0,0],
-    #   pool: DBConnection.ConnectionPool
-    # )
-
-    # Postgrex.query!(DB, "INSERT INTO pizzas(name, img, tomat, mozarella, basilika, skinka, svamp, kronärtskocka, oliver, parmesan, pecorino, gorgonzola, paprika, aubergine, zucchini, salami, chili)
-    # VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)", ["Quattro formaggi","quattro-formaggi.svg",1,1,0,0,0,0,0,1,1,1,0,0,0,0,0],
-    #   pool: DBConnection.ConnectionPool
-    # )
-
-    # Postgrex.query!(DB, "INSERT INTO pizzas(name, img, tomat, mozarella, basilika, skinka, svamp, kronärtskocka, oliver, parmesan, pecorino, gorgonzola, paprika, aubergine, zucchini, salami, chili)
-    # VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)", ["Ortolana","ortolana.svg",1,1,0,0,0,0,0,0,0,0,1,1,1,0,0],
-    #   pool: DBConnection.ConnectionPool
-    # )
-
-    # Postgrex.query!(DB, "INSERT INTO pizzas(name, img, tomat, mozarella, basilika, skinka, svamp, kronärtskocka, oliver, parmesan, pecorino, gorgonzola, paprika, aubergine, zucchini, salami, chili)
-    # VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)", ["Diavola","diavola.svg",1,1,0,0,0,0,0,0,0,0,0,1,0,1,1],
-    #   pool: DBConnection.ConnectionPool
-    # )
-
     Postgrex.query!(DB, "INSERT INTO fruits(name, tastiness) VALUES($1, $2)", ["Apple", 5],
       pool: DBConnection.ConnectionPool
     )
@@ -415,10 +372,6 @@ defmodule Mix.Tasks.Seed do
     Postgrex.query!(DB, "INSERT INTO fruits(name, tastiness) VALUES($1, $2)", ["Banana", 7],
       pool: DBConnection.ConnectionPool
     )
-
-    # Postgrex.query!(DB, "SELECT * FROM pizzas JOIN pizza_cart ON pizzas.name = pizza_cart.name WHERE pizzas.name = $1",
-    #   pool: DBConnection.ConnectionPool
-    # )
 
     Postgrex.query!(
       DB,
