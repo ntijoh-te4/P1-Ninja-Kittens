@@ -24,14 +24,18 @@ defmodule Pluggy.PizzaController do
 
   def tonys(conn), do: send_resp(conn, 200, render("pizzas/tonys_pizzas", pizzas: Pizza.all()))
 
-  # def update(conn, id, params) do
-  #   Pizza.update(id, params)
+  # def edit(conn, id, params) do
+  #   Pizza.edit(id, params)
   #   redirect(conn, "pizzas/index")
   # end
 
+  def destroy(conn, id) do
+    Pizza.delete(id)
+    redirect(conn, "/tonys_pizzas")
+  end
 
 
-  # defp redirect(conn, url) do
-  #   Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
-  # end
+  defp redirect(conn, url) do
+    Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
+  end
 end

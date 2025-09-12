@@ -17,16 +17,9 @@ defmodule Pluggy.Pizza do
     |> to_struct
   end
 
-  # def update(id, params) do
-  #   name = params["name"]
-  #   id = String.to_integer(id)
-
-  #   Postgrex.query!(
-  #     DB,
-  #     "UPDATE pizzas SET name = $1, WHERE id = $2",
-  #     [name, id]
-  #   )
-  # end
+  def delete(id) do
+    Postgrex.query!(DB, "DELETE FROM pizzas WHERE id = $1", [String.to_integer(id)])
+  end
 
   def group(pizzas) do
    Enum.group_by(pizzas, fn pizza -> Enum.at(pizza, 0) end)
