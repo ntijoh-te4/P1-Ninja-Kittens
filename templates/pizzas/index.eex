@@ -8,9 +8,9 @@
 <main_section_index>
 <%= for pizza <- pizzas do %>
         <orders>
+        <a id="pizza_names" style="text-decoration:none;" href="/pizzas/<%= pizza.id %>">
             <img class="pizza_display" src="/uploads/img/<%= pizza.img %>">
                 <div>
-                    <a id="pizza_names" style="text-decoration:none;" href="/pizzas/<%= pizza.id %>">
                         <h1 id="pizza_name_index"><%= pizza.name %></h1>
                         <ul class="ing_list">
                             <%= for things <- pizza.ingredients do %>
