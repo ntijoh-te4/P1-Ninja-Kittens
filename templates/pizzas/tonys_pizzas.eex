@@ -31,6 +31,7 @@
                 <%= if pizza.kronärtskocka == 1 do %>
                      <h3>Kronartskocka</h3>
                 <% end %>
+            <button>Anpassa</button>
             </div>
     </orders>
 <% end  %>

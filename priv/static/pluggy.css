@@ -78,3 +78,12 @@ div {
 .pizza_display{
 	width: 300px;
 }
+
+div button{
+	margin-top: 50px;
+	width: fit-content;
+	padding: 5px;
+	background-color: bisque;
+	border: 2px;
+	border-radius: 7px;
+}
