@@ -21,6 +21,10 @@ defmodule Pluggy.Pizza do
     Postgrex.query!(DB, "DELETE FROM pizzas WHERE id = $1", [String.to_integer(id)])
   end
 
+  def get_ingredients() do
+    Postgrex.query!(DB, "SELECT * FROM ingredients").rows
+  end
+
   def group(pizzas) do
    Enum.group_by(pizzas, fn pizza -> Enum.at(pizza, 0) end)
   end
