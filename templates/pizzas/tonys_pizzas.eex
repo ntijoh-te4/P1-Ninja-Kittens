@@ -5,15 +5,31 @@
 <h1 class="pizza_orders_header">PIZZA ORDERS</h1>
 <%= for pizza <- pizzas do %>
     <orders>
-    <h1 class="order_text"><%= pizza.name %></h1>
-    <img class="pizza_display" src="/uploads/img/<%= pizza.img %>">
-    <h2 class="order_text">Ingredienser</h2>
-    <%= if pizza.tomat == 1 do %>
-        <h3>Tomat</h3>
-    <% end %>
-     <%= if pizza.salami == 1 do %>
-        <h3>Salami</h3>
-    <% end %>
+        <img class="pizza_display" src="/uploads/img/<%= pizza.img %>">
+            <div>
+                <h1 class="order_text"><%= pizza.name %></h1>
+                <%= if pizza.tomat == 1 do %>
+                    <h3>Tomat</h3>
+                <% end %>
+                <%= if pizza.salami == 1 do %>
+                     <h3>Salami</h3>
+                <% end %>
+                <%= if pizza.mozarella == 1 do %>
+                     <h3>Mozarella</h3>
+                <% end %>
+                <%= if pizza.basilika == 1 do %>
+                     <h3>Basilika</h3>
+                <% end %>
+                <%= if pizza.skinka == 1 do %>
+                     <h3>Skinka</h3>
+                <% end %>
+                <%= if pizza.svamp == 1 do %>
+                     <h3>Svamp</h3>
+                <% end %>
+                <%= if pizza.kronärtskocka == 1 do %>
+                     <h3>Kronartskocka</h3>
+                <% end %>
+            </div>
     </orders>
 <% end  %>
 </main_section>

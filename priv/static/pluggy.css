@@ -28,12 +28,10 @@ main {
 main_section {
 	display: grid;
 	height: 100vh;
-
 }
 
 .order_text {
 	margin: 0;
-	text-decoration: underline;
 }
 
 
@@ -46,17 +44,24 @@ main_section {
 
 h3 {
 	margin: 0;
-	font-size: large;
+	font-weight: 500;
+	margin-top: 15px;
 }
 
 orders {
-	background-color: goldenrod;
-	display: grid;
+	display: flex;
 	margin-bottom: 100px;
 	margin-left: 100px;
-	width: 650px;
+	width: fit-content;
+	height: fit-content;
+}
+
+div {
+	display:grid;
+	height: fit-content;
+	margin-top: 15%;
 }
 
 .pizza_display{
-	width: 600px;
+	width: 300px;
 }
