@@ -1,7 +1,26 @@
-<h1>Pizzas (/pizzas/<%= pizzas.id %>)</h1>
+<link rel="stylesheet" href="<%= "/priv/app.css" %>">
+<meta charset="UTF-8">
+
+<nav class="tonys_nav">
+    <img class="tonys_logga" src="<%= "/uploads/img/tonys-pizza-logo.svg" %>" alt="SVG" />
+    <img class="tonys_basket" src="<%= "/uploads/img/tonys-pizza-basket.svg" %>" alt="SVG" />
+</nav>
+
+<h1 id="edit_header">Anpassa din <%= pizzas.name %></h1>
 
 <h2>
-	<a href="/pizzas/<%= pizzas.id %>/edit"><%= pizzas.name %></a>
+<main_show>
+		<img class="show_pizza_img" src="/uploads/img/<%= pizzas.img %>">
+
+	<div>
+        <%= for ingredients <- pizzas.ingredients do %>
+            <ul type=checkbox>
+             <%= ingredients %>  <input type="checkbox" >
+            </ul>
+        <% end %>
+    </div>
+
+	</main_show>
 	<form action="/pizzas/<%= pizzas.id %>/destroy" method="post">
 		<button type="submit">Destroy Pizza</button>
 	</form>

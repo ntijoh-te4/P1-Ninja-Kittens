@@ -123,3 +123,27 @@ buttons {
 orders {
 	margin-bottom: 50px;
 }
+
+#edit_header {
+	margin-left: 200px;
+}
+
+.show_pizza_img {
+	margin-left: 500px;
+	width: 300px;
+}
+
+main_show {
+	display: flex;
+}
+
+main_show div {
+	align-self: center;
+}
+
+main_show ul {
+	align-items: center;
+	margin: 0;
+	margin-top: 10px;
+	font-weight: 500;
+}
