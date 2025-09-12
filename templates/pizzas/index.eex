@@ -1,1 +1,23 @@
-<h1> hej </h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="priv/static/pluggy.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main_div">
+        <nav></nav>
+        <%= for pizzas <- pizzas do %>
+            <div class="pizza_article">
+                <img src="/uploads/img/<%= pizzas.img %>" alt="pizza">
+                <p> <%= pizzas.name %> </p>
+                <p> <%= pizzas.skinka %> </p>
+
+            </div>
+        <% end %>
+
+
+    </div>
+</body>
+</html>

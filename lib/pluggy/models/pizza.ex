@@ -1,85 +1,38 @@
 defmodule Pluggy.Pizza do
-  defstruct(id: nil,
-      name: "",
-      img: "",
-      tomat: nil,
-      mozarella: nil,
-      basilika: nil,
-      skinka: nil,
-      svamp: nil,
-      kronärtskocka: nil,
-      oliver: nil,
-      parmesan: nil,
-      pecorino: nil,
-      gorgonzola: nil,
-      paprika: nil,
-      aubergine: nil,
-      zucchini: nil,
-      salami: nil,
-      chili: nil
-    )
-
-      alias Pluggy.Pizza
+ defstruct(id: nil, name: "", img: "", ingredients: [])
+ alias Pluggy.Pizza
 
   def all do
-    Postgrex.query!(DB, "SELECT * FROM pizzas", []).rows
+    query = "SELECT * FROM pizzas JOIN pizza_ingredients ON pizzas.id = pizza_ingredients.pizza_id
+            JOIN ingredients ON pizza_ingredients.ing_id = ingredients.id"
+    Postgrex.query!(DB,  query, []).rows
+    |> group
     |> to_struct_list
   end
 
-   def get(id) do
-    Postgrex.query!(DB, "SELECT * FROM pizzas WHERE id = $1 LIMIT 1", [String.to_integer(id)]
-    ).rows
+  def get(id) do
+    query = "SELECT * FROM pizzas JOIN pizza_ingredients ON pizzas.id = pizza_ingredients.pizza_id
+            JOIN ingredients ON pizza_ingredients.ing_id = ingredients.id WHERE pizzas.id = $1"
+    Postgrex.query!(DB,  query, [id]).rows
     |> to_struct
   end
 
-  # def picture(id) do
-  #   Postgrex.query!(DB, "SELECT img FROM pizzas where id = $1",[id])
-  #   |> Path.join(["../priv/uploads/img/",])
-  #   |> File.read()
-  # end
-
-
-  def to_struct_list(rows) do
-    for [id, name, img, tomat, mozarella, basilika, skinka, svamp, kronärtskocka, oliver, parmesan, pecorino, gorgonzola,paprika,aubergine,zucchini,salami,chili]
-    <- rows, do: %Pizza{
-      id: id,
-      name: name,
-      img: img,
-      tomat: tomat,
-      mozarella: mozarella,
-      basilika: basilika,
-      skinka: skinka,
-      svamp: svamp,
-      kronärtskocka: kronärtskocka,
-      oliver: oliver,
-      parmesan: parmesan,
-      pecorino: pecorino,
-      gorgonzola: gorgonzola,
-      paprika: paprika,
-      aubergine: aubergine,
-      zucchini: zucchini,
-      salami: salami,
-      chili: chili}
+  def group(pizzas) do
+   Enum.group_by(pizzas, fn pizza -> Enum.at(pizza, 0) end)
   end
 
-  def to_struct([[id, name, img, tomat, mozarella, basilika, skinka, svamp, kronärtskocka, oliver, parmesan, pecorino, gorgonzola,paprika,aubergine,zucchini,salami,chili]]) do
-    %Pizza{id: id,
-      name: name,
-      img: img,
-      tomat: tomat,
-      mozarella: mozarella,
-      basilika: basilika,
-      skinka: skinka,
-      svamp: svamp,
-      kronärtskocka: kronärtskocka,
-      oliver: oliver,
-      parmesan: parmesan,
-      pecorino: pecorino,
-      gorgonzola: gorgonzola,
-      paprika: paprika,
-      aubergine: aubergine,
-      zucchini: zucchini,
-      salami: salami,
-      chili: chili}
+  def to_struct_list(grouped) do
+    Enum.map(grouped, fn group ->
+      {_id , rows} = group
+      to_struct(rows)
+    end)
+
+  end
+  def to_struct(rows) do
+    [id, pizza, img, _, _, _, _] = Enum.at(rows, 0)
+    pizza = %Pizza{id: id, name: pizza, img: img}
+    Enum.reduce(rows, pizza, fn [_id, _pizza, _img, _, _, _, ingredient], acc ->
+        %Pizza{ pizza | ingredients: [ingredient | acc.ingredients] }
+     end)
   end
 end
