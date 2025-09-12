@@ -56,9 +56,10 @@ main_section_index {
 	margin: 0;
 }
 
-.pizza_name_index {
+#pizza_name_index {
 	margin-left: 50px;
 	font-family: sans-serif;
+	text-decoration: none;
 }
 
 
@@ -81,6 +82,10 @@ orders {
 	margin-left: 100px;
 	width: fit-content;
 	height: fit-content;
+}
+
+#pizza_names {
+	color: black;
 }
 
 pizza_box {
@@ -118,4 +123,8 @@ buttons {
 .ing_list {
 	color: lightslategray;
 	font-family: sans-serif;
+}
+
+.ingredient_info {
+	padding: 0px;
 }
