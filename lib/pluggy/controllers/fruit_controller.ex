@@ -35,6 +35,7 @@ defmodule Pluggy.FruitController do
     redirect(conn, "/fruits")
   end
 
+  @spec update(Plug.Conn.t(), binary(), nil | maybe_improper_list() | map()) :: Plug.Conn.t()
   def update(conn, id, params) do
     Fruit.update(id, params)
     redirect(conn, "/fruits")

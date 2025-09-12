@@ -17,7 +17,7 @@
                             <% end %>
                         </ul>
                     <buttons>
-                    <a href="<%= pizza.id %>"><button>Anpassa</button></a> <button>Köp</button>
+                    <a href="pizzas/<%= pizza.id %>"><button>Anpassa</button></a> <button>Köp</button>
                     </buttons>
                 </div>
         </orders>

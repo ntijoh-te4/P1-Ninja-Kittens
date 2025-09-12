@@ -21,7 +21,4 @@
     </div>
 
 	</main_show>
-	<form action="/pizzas/<%= pizzas.id %>/destroy" method="post">
-		<button type="submit">Destroy Pizza</button>
-	</form>
 </h2>
