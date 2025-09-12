@@ -21,8 +21,21 @@ main {
 	justify-self: center;
 } */
 
-.tonys_logga{
-	width: auto;
+.tonys_nav{
+	display: flex;
+	height: 300px;
+}
+
+.tonys_logga {
+	margin-left: 20px;
+	
+	width: 80%;
+}
+.tonys_basket {
+
+	margin-inline: 20px;
+	align-self: center;
+	height: 150px;
 }
 
 main_section {
@@ -45,7 +58,7 @@ main_section {
 h3 {
 	margin: 0;
 	font-weight: 500;
-	margin-top: 15px;
+	margin-top: 5px;
 }
 
 orders {
