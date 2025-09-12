@@ -8,18 +8,16 @@
 <main_section_index>
 <%= for pizza <- pizzas do %>
         <orders>
-        <a id="pizza_names" style="text-decoration:none;" href="/pizzas/<%= pizza.id %>">
             <img class="pizza_display" src="/uploads/img/<%= pizza.img %>">
-                <div>
+                <div class="name_and_ing">
                         <h1 id="pizza_name_index"><%= pizza.name %></h1>
                         <ul class="ing_list">
                             <%= for things <- pizza.ingredients do %>
                                 <ul class="ingredient_info"><%= things %></ul>
                             <% end %>
                         </ul>
-                    </a>
                     <buttons>
-                    <button>Anpassa</button> <button>Köp</button>
+                    <a href="<%= pizza.id %>"><button>Anpassa</button></a> <button>Köp</button>
                     </buttons>
                 </div>
         </orders>
