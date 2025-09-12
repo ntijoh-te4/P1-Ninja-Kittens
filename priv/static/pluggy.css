@@ -11,16 +11,6 @@ main {
 	align-items: center;
 }
 
-/* section {
-	display: grid;
-	justify-self: center;
-} */
-
-/* img {
-	display: flex;
-	justify-self: center;
-} */
-
 .tonys_nav{
 	display: flex;
 	height: 300px;
@@ -70,18 +60,19 @@ main_section_index {
 	text-decoration: underline;
 }
 
-h3 {
+tonys_orders ul {
 	margin: 0;
 	font-weight: 500;
 	margin-top: 5px;
 }
 
-orders {
+tonys_orders {
 	display: flex;
 	margin-bottom: 100px;
 	margin-left: 100px;
 	width: fit-content;
 	height: fit-content;
+
 }
 
 #pizza_names {
@@ -97,9 +88,10 @@ pizza_box {
 }
 
 div {
-	display:grid;
+	display: flex;
+	flex-direction: column;
 	height: fit-content;
-	margin-top: 15%;
+
 }
 
 .pizza_display{
@@ -107,7 +99,7 @@ div {
 }
 
 div button{
-	margin-top: 50px;
+	margin-top: 20px;
 	width: fit-content;
 	padding: 5px;
 	background-color: bisque;

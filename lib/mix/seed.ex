@@ -32,45 +32,6 @@ defmodule Mix.Tasks.Seed do
       pool: DBConnection.ConnectionPool
     )
 
-    # 17 arguments
-    # Postgrex.query!(
-    #   DB,
-    #   "Create TABLE pizzas (id SERIAL, name VARCHAR(255) NOT NULL,img TEXT NOT NULL, tomat INTEGER NOT NULL,
-    #   mozarella	INTEGER NOT NULL, basilika	INTEGER NOT NULL, skinka	INTEGER NOT NULL,
-    #   svamp	INTEGER NOT NULL, kronärtskocka	INTEGER NOT NULL, oliver INTEGER NOT NULL,
-    #   parmesan	INTEGER NOT NULL, pecorino	INTEGER NOT NULL, gorgonzola	INTEGER NOT NULL,
-    #   paprika	INTEGER NOT NULL, aubergine	INTEGER NOT NULL, zucchini	INTEGER NOT NULL, salami
-    #   INTEGER NOT NULL, chili	INTEGER NOT NULL)",
-    #   [],
-    #   pool: DBConnection.ConnectionPool
-    # )
-
-    # # 17 arguments
-    # Postgrex.query!(
-    #   DB,
-    #   "Create TABLE pizza_cart (id SERIAL, name VARCHAR(255) NOT NULL,img TEXT NOT NULL, tomat INTEGER NOT NULL,
-    #   mozarella	INTEGER NOT NULL, basilika	INTEGER NOT NULL, skinka	INTEGER NOT NULL,
-    #   svamp	INTEGER NOT NULL, kronärtskocka	INTEGER NOT NULL, oliver INTEGER NOT NULL,
-    #   parmesan	INTEGER NOT NULL, pecorino	INTEGER NOT NULL, gorgonzola	INTEGER NOT NULL,
-    #   paprika	INTEGER NOT NULL, aubergine	INTEGER NOT NULL, zucchini	INTEGER NOT NULL, salami
-    #   INTEGER NOT NULL, chili	INTEGER NOT NULL)",
-    #   [],
-    #   pool: DBConnection.ConnectionPool
-    # )
-
-    # # 18 arguments
-    # Postgrex.query!(
-    #   DB,
-    #   "Create TABLE tony_orders (id SERIAL, name VARCHAR(255) NOT NULL, order_name VARCHAR(255) NOT NULL, img TEXT NOT NULL, tomat INTEGER NOT NULL,
-    #   mozarella	INTEGER NOT NULL, basilika	INTEGER NOT NULL, skinka	INTEGER NOT NULL,
-    #   svamp	INTEGER NOT NULL, kronärtskocka	INTEGER NOT NULL, oliver INTEGER NOT NULL,
-    #   parmesan	INTEGER NOT NULL, pecorino	INTEGER NOT NULL, gorgonzola	INTEGER NOT NULL,
-    #   paprika	INTEGER NOT NULL, aubergine	INTEGER NOT NULL, zucchini	INTEGER NOT NULL, salami
-    #   INTEGER NOT NULL, chili	INTEGER NOT NULL)",
-    #   [],
-    #   pool: DBConnection.ConnectionPool
-    # )
-
     Postgrex.query!(
       DB,
       "Create TABLE users (id SERIAL, username VARCHAR(255) NOT NULL, password_hash CHAR(72) NOT NULL)",
@@ -118,7 +79,7 @@ defmodule Mix.Tasks.Seed do
     )
     Postgrex.query!(
       DB,
-      "INSERT INTO pizzas (name,img) VALUES($1, $2)", ["Quattro stagioni","quattro-stagioni"],
+      "INSERT INTO pizzas (name,img) VALUES($1, $2)", ["Quattro stagioni","quattro-stagioni.svg"],
       pool: DBConnection.ConnectionPool
     )
     Postgrex.query!(

@@ -23,4 +23,15 @@ defmodule Pluggy.PizzaController do
   def show(conn, id), do: send_resp(conn, 200, render("pizzas/show", pizzas: Pizza.get(String.to_integer(id))))
 
   def tonys(conn), do: send_resp(conn, 200, render("pizzas/tonys_pizzas", pizzas: Pizza.all()))
+
+  # def update(conn, id, params) do
+  #   Pizza.update(id, params)
+  #   redirect(conn, "pizzas/index")
+  # end
+
+
+
+  # defp redirect(conn, url) do
+  #   Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
+  # end
 end
