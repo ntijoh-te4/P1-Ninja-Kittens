@@ -68,7 +68,7 @@ defmodule Mix.Tasks.Seed do
 
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_cart (name,img) VALUES($1, $2)", ["Margherita","margherita.svg"],
+      "INSERT INTO pizza_cart (name,img) VALUES($1, $2)", ["",""],
       pool: DBConnection.ConnectionPool
     )
 

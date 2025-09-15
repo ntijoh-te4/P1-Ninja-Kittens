@@ -10,12 +10,23 @@ defmodule Pluggy.Pizza do
     |> to_struct_list
   end
 
-    def cart do
-    IO.inspect("hej")
-    Postgrex.query!(DB, "SELECT * FROM pizza_cart JOIN pizza_ingredients ON pizza_cart.id = pizza_ingredients.pizza_id JOIN ingredients ON pizza_ingredients.ing_id = ingredients.id",[]).rows
-    |> group
-    |> to_struct_list
+  def cart do
+    Postgrex.query!(DB, "SELECT * FROM pizza_ingredients JOIN pizzas
+                        ON pizza_ingredients.pizza_id = pizzas.id")
   end
+
+  def add_into_cart(id) do
+    IO.inspect(id)
+    Postgrex.query!(DB, "INSERT INTO pizza_cart (name, img) FROM pizzas WHERE id=$1 VALUES ($2,$3)", [id])
+  end
+
+  #   def cart do
+  #   IO.inspect("hej")
+  #   Postgrex.query!(DB, "SELECT * FROM pizza_cart JOIN pizza_ingredients ON pizza_cart.id = pizza_ingredients.pizza_id
+  #                       JOIN ingredients ON pizza_ingredients.ing_id = ingredients.id",[]).rows
+  #   |> group
+  #   |> to_struct_list
+  # end
 
   def get(id) do
     query = "SELECT * FROM pizzas JOIN pizza_ingredients ON pizzas.id = pizza_ingredients.pizza_id
@@ -78,6 +89,10 @@ defmodule Pluggy.Pizza do
   def get_ingredients() do
     Postgrex.query!(DB, "SELECT * FROM ingredients").rows
   end
+
+  # def get_pizza_ingredient(id) do
+  #   Postgrex.query!(DB, "SELECT * FROM ingredients WHERE id=?", [id]).rows
+  # end
 
   def group(pizzas) do
    Enum.group_by(pizzas, fn pizza -> Enum.at(pizza, 0) end)

@@ -17,8 +17,10 @@
                                 <% end %>
                             </ul>
                         <buttons>
-                            <a href="/cart"a><button>Välj</button></a>
-                        </buttons>
+                        <form action="/cart" method="post">
+                            <input type="hidden" name="pizza_id" value="<%= pizza.id %>">
+                            <button type="submit">Välj</button>
+                        </form>
                 </div_index>
         </orders>
     <% end  %>

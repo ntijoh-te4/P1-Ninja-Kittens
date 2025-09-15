@@ -18,6 +18,7 @@
                                 <% end %>
                             </ul>
                         <buttons>
+                            <a href="/pizzas/<%= pizza.id %>"a><button>Ändra</button></a>
                             <a href="/cart"a><button>Välj</button></a>
                         </buttons>
                 </div_index>

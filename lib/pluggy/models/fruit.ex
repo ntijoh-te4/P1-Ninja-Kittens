@@ -33,6 +33,7 @@ defmodule Pluggy.Fruit do
     Postgrex.query!(DB, "INSERT INTO fruits (name, tastiness) VALUES ($1, $2)", [name, tastiness])
   end
 
+  @spec delete(binary()) :: Postgrex.Result.t()
   def delete(id) do
     Postgrex.query!(DB, "DELETE FROM fruits WHERE id = $1", [String.to_integer(id)])
   end
