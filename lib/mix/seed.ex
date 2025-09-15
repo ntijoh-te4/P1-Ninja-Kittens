@@ -12,7 +12,6 @@ defmodule Mix.Tasks.Seed do
   defp drop_tables() do
     IO.puts("Dropping tables")
 
-
     Postgrex.query!(DB, "DROP TABLE IF EXISTS pizza_cart", [], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "DROP TABLE IF EXISTS tony_orders", [], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "DROP TABLE IF EXISTS pizzas", [], pool: DBConnection.ConnectionPool)

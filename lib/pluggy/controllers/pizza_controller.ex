@@ -30,6 +30,11 @@ defmodule Pluggy.PizzaController do
   #   redirect(conn, "pizzas/index")
   # end
 
+  def create(conn,params) do
+    Pizza.create(params)
+    redirect(conn, "/pizza_cart")
+  end
+
   def destroy(conn, id) do
     Pizza.delete(id)
     redirect(conn, "/tonys_pizzas")

@@ -27,11 +27,11 @@ defmodule Pluggy.FruitController do
 
   def create(conn, params) do
     Fruit.create(params)
-    case params["file"] do
-      nil -> IO.puts("No file uploaded")  #do nothing
-        # move uploaded file from tmp-folder
-      _  -> File.rename(params["file"].path, "priv/static/uploads/#{params["file"].filename}")
-    end
+    # case params["file"] do
+    #   nil -> IO.puts("No file uploaded")  #do nothing
+    #     # move uploaded file from tmp-folder
+    #   _  -> File.rename(params["file"].path, "priv/static/uploads/#{params["file"].filename}")
+    # end
     redirect(conn, "/fruits")
   end
 

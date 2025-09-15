@@ -28,9 +28,10 @@ defmodule Pluggy.Router do
   get("/cart", do: PizzaController.cart(conn))
   get("/pizzas/:id", do: PizzaController.show(conn, id))
   get("/tonys_pizzas", do: PizzaController.tonys(conn))
+  get("/pizza_cart", do: PizzaController.cart(conn))
 
   post("/tonys_pizzas/:id/destroy", do: PizzaController.destroy(conn, id))
-
+  post("/pizza_cart", do: PizzaController.create(conn,conn.body_params))
 
   ######
 
