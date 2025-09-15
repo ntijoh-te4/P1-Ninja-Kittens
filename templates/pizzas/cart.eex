@@ -20,7 +20,9 @@
                         <buttons>
                             <a href="/pizzas/<%= pizza.id %>"a><button>Ändra</button></a>
                             <a href="/cart"a><button>Välj</button></a>
-                        </buttons>
+                            <a href="/cart"a><button>Ändra</button></a>
+                            </buttons>
+                        </form>
                 </div_index>
         </orders>
     <% end  %>
