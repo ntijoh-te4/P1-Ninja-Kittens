@@ -22,7 +22,7 @@
 <ul>
   <%= for fruit <- pizzas do %>
     <li>
-    	<a href="/pizzas/<%= fruit.id %>">
+    	<a href="/pizzas/<%= pizzas.id %>">
 			<%= fruit.name %> - <%= fruit.name %>
 		</a>
 	</li>

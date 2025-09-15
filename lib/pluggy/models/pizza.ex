@@ -10,6 +10,13 @@ defmodule Pluggy.Pizza do
     |> to_struct_list
   end
 
+    def cart do
+    IO.inspect("hej")
+    Postgrex.query!(DB, "SELECT * FROM pizza_cart JOIN pizza_ingredients ON pizza_cart.id = pizza_ingredients.pizza_id JOIN ingredients ON pizza_ingredients.ing_id = ingredients.id",[]).rows
+    |> group
+    |> to_struct_list
+  end
+
   def get(id) do
     query = "SELECT * FROM pizzas JOIN pizza_ingredients ON pizzas.id = pizza_ingredients.pizza_id
             JOIN ingredients ON pizza_ingredients.ing_id = ingredients.id WHERE pizzas.id = $1"

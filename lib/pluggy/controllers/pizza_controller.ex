@@ -20,7 +20,9 @@ defmodule Pluggy.PizzaController do
     )
   end
 
-  def show(conn, id), do: send_resp(conn, 200, render("pizzas/show", ingredients: Pizza.get_ingredients, pizzas: Pizza.get(String.to_integer(id))))
+  def show(conn, id), do: send_resp(conn, 200, render("pizzas/show", pizzas: Pizza.get(String.to_integer(id))))
+
+  def cart(conn), do: send_resp(conn, 200, render("pizzas/cart", pizzas: Pizza.cart()))
 
   def tonys(conn), do: send_resp(conn, 200, render("pizzas/tonys_pizzas", pizzas: Pizza.all()))
 
