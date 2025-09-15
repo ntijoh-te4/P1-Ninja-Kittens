@@ -13,14 +13,12 @@
 		<img class="show_pizza_img" src="/uploads/img/<%= pizzas.img %>">
 
 	<div>
-        <form action="/pizzas/<%= pizzas.id %>">
             <%= for ingredient <- ingredients do %>
                 <ul type=checkbox>
                     <%= ingredient %>  <input type="checkbox">
                 </ul>
             <% end %>
 	        <button type=submit>Update</button>
-        </form>
     </div>
 
 	</main_show>

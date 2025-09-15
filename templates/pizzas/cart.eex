@@ -17,9 +17,15 @@
                                     <ul class="ingredient_info"><%= things %></ul>
                                 <% end %>
                             </ul>
-                        <buttons>
+                        <form action="/pizzas" method="post">
+	                        <input type="text" name="name" value="<%= pizza.name %>">
+	                        <input type="text" name="tastiness" value="<%= pizza.ingredients %>" />
+	                        <button type=submit>Update</button>
+                            <buttons>
                             <a href="/cart"a><button>Välj</button></a>
-                        </buttons>
+                            <a href="/cart"a><button>Ändra</button></a>
+                            </buttons>
+                        </form>
                 </div_index>
         </orders>
     <% end  %>
