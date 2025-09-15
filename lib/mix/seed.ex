@@ -63,9 +63,16 @@ defmodule Mix.Tasks.Seed do
 
     Postgrex.query!(
       DB,
-      "Create TABLE pizza_cart (id SERIAL, name VARCHAR(255), ingredients TEXT)",[],
+      "Create TABLE pizza_cart (id SERIAL, name VARCHAR(255), img TEXT)",[],
       pool: DBConnection.ConnectionPool
     )
+
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_cart (name,img) VALUES($1, $2)", ["Margherita","margherita.svg"],
+      pool: DBConnection.ConnectionPool
+    )
+
 
     #PIZZAS
     Postgrex.query!(
@@ -366,13 +373,6 @@ defmodule Mix.Tasks.Seed do
       "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [8,15],
       pool: DBConnection.ConnectionPool
     )
-
-
-
-
-
-
-
 
     Postgrex.query!(DB, "INSERT INTO fruits(name, tastiness) VALUES($1, $2)", ["Apple", 5],
       pool: DBConnection.ConnectionPool
