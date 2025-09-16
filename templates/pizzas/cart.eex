@@ -3,7 +3,9 @@
 
 <nav class="tonys_nav">
     <img class="tonys_logga" src="<%= "/uploads/img/tonys-pizza-logo.svg" %>" alt="SVG" />
-    <img class="tonys_basket" src="<%= "/uploads/img/tonys-pizza-basket.svg" %>" alt="SVG" />
+    <a href="/cart">
+        <img class="tonys_basket" src="<%= "/uploads/img/tonys-pizza-basket.svg" %>" alt="SVG" />
+    </a>
 </nav>
 
 <main_section_index>
@@ -20,10 +22,10 @@
                         <buttons>
                             <a href="/pizzas/<%= pizza.id %>"a><button>Ändra</button></a>
                             <a href="/cart"a><button>Välj</button></a>
-                            <a href="/cart"a><button>Ändra</button></a>
                             </buttons>
                         </form>
                 </div_index>
         </orders>
     <% end  %>
+    <a href="/pizzas"><button>Tillbaka</button></a>
 </main_section_index>

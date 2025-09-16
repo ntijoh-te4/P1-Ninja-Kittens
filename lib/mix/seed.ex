@@ -12,10 +12,15 @@ defmodule Mix.Tasks.Seed do
   defp drop_tables() do
     IO.puts("Dropping tables")
 
+
     Postgrex.query!(DB, "DROP TABLE IF EXISTS pizza_cart", [], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "DROP TABLE IF EXISTS tony_orders", [], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "DROP TABLE IF EXISTS pizzas", [], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "DROP TABLE IF EXISTS pizza_ingredients", [], pool: DBConnection.ConnectionPool)
+
+    Postgrex.query!(DB, "DROP TABLE IF EXISTS pizza_ingredients", [],
+      pool: DBConnection.ConnectionPool
+    )
+
     Postgrex.query!(DB, "DROP TABLE IF EXISTS ingredients", [], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "DROP TABLE IF EXISTS fruits", [], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "DROP TABLE IF EXISTS users", [], pool: DBConnection.ConnectionPool)
@@ -44,332 +49,439 @@ defmodule Mix.Tasks.Seed do
 
     Postgrex.query!(
       DB,
-      "Create TABLE pizzas (id SERIAL, name VARCHAR(255) NOT NULL, img VARCHAR(255))",[],
+      "Create TABLE pizzas (id SERIAL, name VARCHAR(255) NOT NULL, img VARCHAR(255))",
+      [],
       pool: DBConnection.ConnectionPool
     )
 
     Postgrex.query!(
       DB,
-      "Create TABLE ingredients (id SERIAL, name VARCHAR(255) NOT NULL)",[],
+      "Create TABLE ingredients (id SERIAL, name VARCHAR(255) NOT NULL)",
+      [],
       pool: DBConnection.ConnectionPool
     )
 
     Postgrex.query!(
       DB,
-      "Create TABLE pizza_ingredients (pizza_id INTEGER NOT NULL,ing_id INTEGER NOT NULL)",[],
+      "Create TABLE pizza_ingredients (pizza_id INTEGER NOT NULL,ing_id INTEGER NOT NULL)",
+      [],
       pool: DBConnection.ConnectionPool
     )
 
     Postgrex.query!(
       DB,
-      "Create TABLE pizza_cart (id SERIAL, name VARCHAR(255), img TEXT)",[],
+      "Create TABLE pizza_cart (id SERIAL PRIMARY KEY, pizza_id INTEGER, order_id INTEGER)",
+      [],
+      pool: DBConnection.ConnectionPool
+    )
+
+    # PIZZAS
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizzas (name,img) VALUES($1, $2)",
+      ["Margherita", "margherita.svg"],
       pool: DBConnection.ConnectionPool
     )
 
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_cart (name,img) VALUES($1, $2)", ["",""],
+      "INSERT INTO pizzas (name,img) VALUES($1, $2)",
+      ["Marinara", "marinara.svg"],
       pool: DBConnection.ConnectionPool
     )
 
-
-    #PIZZAS
     Postgrex.query!(
       DB,
-      "INSERT INTO pizzas (name,img) VALUES($1, $2)", ["Margherita","margherita.svg"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO pizzas (name,img) VALUES($1, $2)", ["Marinara","marinara.svg"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO pizzas (name,img) VALUES($1, $2)", ["Prosciutto e funghi","prosciutto-e-funghi.svg"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO pizzas (name,img) VALUES($1, $2)", ["Quattro stagioni","quattro-stagioni.svg"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO pizzas (name,img) VALUES($1, $2)", ["Capricciosa","capricciosa.svg"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO pizzas (name,img) VALUES($1, $2)", ["Quattro formaggi","quattro-formaggi.svg"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO pizzas (name,img) VALUES($1, $2)", ["Ortolana","ortolana.svg"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO pizzas (name,img) VALUES($1, $2)", ["Diavola","diavola.svg"],
+      "INSERT INTO pizzas (name,img) VALUES($1, $2)",
+      ["Prosciutto e funghi", "prosciutto-e-funghi.svg"],
       pool: DBConnection.ConnectionPool
     )
 
-    #INGREDIENTS
     Postgrex.query!(
       DB,
-      "INSERT INTO ingredients (name) VALUES($1)", ["Tomatsås"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO ingredients (name) VALUES($1)", ["Mozarella"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO ingredients (name) VALUES($1)", ["Basilika"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO ingredients (name) VALUES($1)", ["Skinka"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO ingredients (name) VALUES($1)", ["Svamp"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO ingredients (name) VALUES($1)", ["Kronärtskocka"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO ingredients (name) VALUES($1)", ["Oliver"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO ingredients (name) VALUES($1)", ["Parmesan"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO ingredients (name) VALUES($1)", ["Pecorino"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO ingredients (name) VALUES($1)", ["Gorgonzola"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO ingredients (name) VALUES($1)", ["Paprika"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO ingredients (name) VALUES($1)", ["Aubergine"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO ingredients (name) VALUES($1)", ["Zucchini"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO ingredients (name) VALUES($1)", ["Salami"],
-      pool: DBConnection.ConnectionPool
-    )
-    Postgrex.query!(
-      DB,
-      "INSERT INTO ingredients (name) VALUES($1)", ["Chili"],
+      "INSERT INTO pizzas (name,img) VALUES($1, $2)",
+      ["Quattro stagioni", "quattro-stagioni.svg"],
       pool: DBConnection.ConnectionPool
     )
 
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizzas (name,img) VALUES($1, $2)",
+      ["Capricciosa", "capricciosa.svg"],
+      pool: DBConnection.ConnectionPool
+    )
 
-    #TABELL
-    #MARGARITA
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [1,1],
+      "INSERT INTO pizzas (name,img) VALUES($1, $2)",
+      ["Quattro formaggi", "quattro-formaggi.svg"],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [1,2],
+      "INSERT INTO pizzas (name,img) VALUES($1, $2)",
+      ["Ortolana", "ortolana.svg"],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [1,3],
+      "INSERT INTO pizzas (name,img) VALUES($1, $2)",
+      ["Diavola", "diavola.svg"],
       pool: DBConnection.ConnectionPool
     )
-    #MARINARA
+
+    # INGREDIENTS
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [2,1],
+      "INSERT INTO ingredients (name) VALUES($1)",
+      ["Tomatsås"],
       pool: DBConnection.ConnectionPool
     )
-    #PROSCIOTTO FUNGO
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [3,1],
+      "INSERT INTO ingredients (name) VALUES($1)",
+      ["Mozarella"],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [3,2],
+      "INSERT INTO ingredients (name) VALUES($1)",
+      ["Basilika"],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [3,4],
+      "INSERT INTO ingredients (name) VALUES($1)",
+      ["Skinka"],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [3,5],
+      "INSERT INTO ingredients (name) VALUES($1)",
+      ["Svamp"],
       pool: DBConnection.ConnectionPool
     )
-    #QUATTRO STAGIONI
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [4,1],
+      "INSERT INTO ingredients (name) VALUES($1)",
+      ["Kronärtskocka"],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [4,2],
+      "INSERT INTO ingredients (name) VALUES($1)",
+      ["Oliver"],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [4,4],
+      "INSERT INTO ingredients (name) VALUES($1)",
+      ["Parmesan"],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [4,5],
+      "INSERT INTO ingredients (name) VALUES($1)",
+      ["Pecorino"],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [4,6],
+      "INSERT INTO ingredients (name) VALUES($1)",
+      ["Gorgonzola"],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [4,7],
+      "INSERT INTO ingredients (name) VALUES($1)",
+      ["Paprika"],
       pool: DBConnection.ConnectionPool
     )
-    #CAPPRIOSCISOSO
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [5,1],
+      "INSERT INTO ingredients (name) VALUES($1)",
+      ["Aubergine"],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [5,2],
+      "INSERT INTO ingredients (name) VALUES($1)",
+      ["Zucchini"],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [5,4],
+      "INSERT INTO ingredients (name) VALUES($1)",
+      ["Salami"],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [5,5],
+      "INSERT INTO ingredients (name) VALUES($1)",
+      ["Chili"],
       pool: DBConnection.ConnectionPool
     )
+
+    # TABELL
+    # MARGARITA
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [5,6],
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [1, 1],
       pool: DBConnection.ConnectionPool
     )
-    #QUATTRO FORMAGGI
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [6,1],
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [1, 2],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [6,2],
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [1, 3],
       pool: DBConnection.ConnectionPool
     )
+
+    # MARINARA
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [6,8],
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [2, 1],
       pool: DBConnection.ConnectionPool
     )
+
+    # PROSCIOTTO FUNGO
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [6,9],
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [3, 1],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [6,10],
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [3, 2],
       pool: DBConnection.ConnectionPool
     )
-    #ORTOLANA
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [7,1],
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [3, 4],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [7,2],
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [3, 5],
       pool: DBConnection.ConnectionPool
     )
+
+    # QUATTRO STAGIONI
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [7,11],
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [4, 1],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [7,12],
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [4, 2],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [7,13],
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [4, 4],
       pool: DBConnection.ConnectionPool
     )
-    #DIAVOLA
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [8,1],
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [4, 5],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [8,2],
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [4, 6],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [8,14],
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [4, 7],
       pool: DBConnection.ConnectionPool
     )
+
+    # CAPPRIOSCISOSO
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [8,11],
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [5, 1],
       pool: DBConnection.ConnectionPool
     )
+
     Postgrex.query!(
       DB,
-      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)", [8,15],
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [5, 2],
+      pool: DBConnection.ConnectionPool
+    )
+
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [5, 4],
+      pool: DBConnection.ConnectionPool
+    )
+
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [5, 5],
+      pool: DBConnection.ConnectionPool
+    )
+
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [5, 6],
+      pool: DBConnection.ConnectionPool
+    )
+
+    # QUATTRO FORMAGGI
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [6, 1],
+      pool: DBConnection.ConnectionPool
+    )
+
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [6, 2],
+      pool: DBConnection.ConnectionPool
+    )
+
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [6, 8],
+      pool: DBConnection.ConnectionPool
+    )
+
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [6, 9],
+      pool: DBConnection.ConnectionPool
+    )
+
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [6, 10],
+      pool: DBConnection.ConnectionPool
+    )
+
+    # ORTOLANA
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [7, 1],
+      pool: DBConnection.ConnectionPool
+    )
+
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [7, 2],
+      pool: DBConnection.ConnectionPool
+    )
+
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [7, 11],
+      pool: DBConnection.ConnectionPool
+    )
+
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [7, 12],
+      pool: DBConnection.ConnectionPool
+    )
+
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [7, 13],
+      pool: DBConnection.ConnectionPool
+    )
+
+    # DIAVOLA
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [8, 1],
+      pool: DBConnection.ConnectionPool
+    )
+
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [8, 2],
+      pool: DBConnection.ConnectionPool
+    )
+
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [8, 14],
+      pool: DBConnection.ConnectionPool
+    )
+
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [8, 11],
+      pool: DBConnection.ConnectionPool
+    )
+
+    Postgrex.query!(
+      DB,
+      "INSERT INTO pizza_ingredients (pizza_id,ing_id) VALUES($1, $2)",
+      [8, 15],
       pool: DBConnection.ConnectionPool
     )
 
@@ -391,7 +503,5 @@ defmodule Mix.Tasks.Seed do
       ["Tony", Bcrypt.hash_pwd_salt("a")],
       pool: DBConnection.ConnectionPool
     )
-
-
   end
 end

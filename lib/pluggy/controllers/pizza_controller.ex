@@ -19,7 +19,17 @@ defmodule Pluggy.PizzaController do
     send_resp(conn, 200, render("pizzas/index", pizzas: Pizza.all(), user: current_user))
   end
 
-  def show(conn, id), do: send_resp(conn, 200, render("pizzas/show", ingredients: Pizza.get_ingredients, pizzas: Pizza.get(String.to_integer(id))))
+  def show(conn, id),
+    do:
+      send_resp(
+        conn,
+        200,
+        render("pizzas/show",
+          ingredients: Pizza.get_ingredients(),
+          pizzas: Pizza.get(String.to_integer(id))
+        )
+      )
+
   def cart(conn), do: send_resp(conn, 200, render("pizzas/cart", pizzas: Pizza.cart()))
 
   def tonys(conn), do: send_resp(conn, 200, render("pizzas/tonys_pizzas", pizzas: Pizza.all()))
@@ -31,11 +41,11 @@ defmodule Pluggy.PizzaController do
 
   def create(conn, params) do
     Pizza.create(params)
-    redirect(conn, "/pizza_cart")
+    redirect(conn, "/cart")
   end
 
-  def add_into_cart(conn, id) do
-    Pizza.add_into_cart(id)
+  def add_into_cart(conn, params) do
+    Pizza.add_into_cart(params["pizza_id"])
     redirect(conn, "/cart")
   end
 

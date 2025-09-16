@@ -13,12 +13,15 @@
 		<img class="show_pizza_img" src="/uploads/img/<%= pizzas.img %>">
 
 	<div>
-            <%= for ingredient <- ingredients do %>
+            <form action="/show/<% pizzas.id %>" method="post">
+            <input type="hidden" value="<%= pizzas.id %>" name="pizza_id">
+            <%= for [id, ingredient] <- ingredients do %>
                 <ul type=checkbox>
-                    <%= ingredient %>  <input type="checkbox">
+                    <%= ingredient %>  <input type="checkbox" value="<%= id  %>" name="ingredients[]">
                 </ul>
             <% end %>
-	        <button type=submit>Update</button>
+	        <input type="submit">
+            </form>
     </div>
 
 	</main_show>
